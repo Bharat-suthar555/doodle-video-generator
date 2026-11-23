@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DemoCRM (Fictional Mock App)</title>
+    <style>
+      :root {
+        --ink: #1d2433;
+        --muted: #667085;
+        --line: #e4e7ec;
+        --brand: #2b6cb0;
+        --bg: #f6f7fb;
+        --new: #e8f1fb;
+        --won: #e6f6ec;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font: 18px/1.4 system-ui, -apple-system, 'Segoe UI', sans-serif; color: var(--ink); background: var(--bg); }
+      .banner { background: #fff3bf; color: #5c4400; text-align: center; padding: 8px; font-size: 15px; font-weight: 600; }
+      .app { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 37px); }
+      nav { background: #111827; color: #d0d5dd; padding: 28px 20px; }
+      nav h1 { color: #fff; font-size: 24px; margin: 0 0 32px; }
+      nav a { display: block; padding: 10px 12px; border-radius: 8px; color: inherit; text-decoration: none; margin-bottom: 4px; }
+      nav a.active { background: #1f2a44; color: #fff; }
+      main { padding: 32px 40px; }
+      header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+      header h2 { margin: 0; font-size: 30px; }
+      button { font: inherit; border: 0; border-radius: 10px; padding: 12px 20px; cursor: pointer; }
+      .primary { background: var(--brand); color: #fff; font-weight: 600; }
+      .stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 28px; }
+      .stage { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+      .stage b { display: block; font-size: 34px; }
+      .stage span { color: var(--muted); font-size: 15px; text-transform: uppercase; letter-spacing: 0.04em; }
+      table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+      th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+      th { color: var(--muted); font-size: 14px; text-transform: uppercase; letter-spacing: 0.04em; background: #fafbfc; }
+      .pill { display: inline-block; padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 600; background: var(--new); color: var(--brand); }
+      .pill.won { background: var(--won); color: #2f855a; }
+      tr.added { animation: flash 1.6s ease-out; }
+      @keyframes flash { from { background: #fff3bf; } to { background: #fff; } }
+      dialog { border: 0; border-radius: 16px; padding: 28px; width: 460px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25); }
+      dialog h3 { margin: 0 0 18px; font-size: 24px; }
+      label { display: block; font-size: 15px; color: var(--muted); margin: 12px 0 6px; }
+      input { width: 100%; font: inherit; padding: 10px 12px; border: 1px solid #d0d5dd; border-radius: 10px; }
+      .actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+      .ghost { background: #f2f4f7; }
+    </style>
+  </head>
+  <body>
+    <div class="banner">Fictional mock application for demonstrations · every name and number is made up</div>
+    <div class="app">
+      <nav>
+        <h1>DemoCRM</h1>
+        <a class="active" href="#">Leads</a>
+        <a href="#">Pipeline</a>
+        <a href="#">Reports</a>
+      </nav>
+      <main>
+        <header>
+          <h2>Leads</h2>
+          <button class="primary" id="new-lead">+ New lead</button>
+        </header>
+        <section class="stages">
+          <div class="stage"><span>New</span><b id="count-new">3</b></div>
+          <div class="stage"><span>Qualified</span><b>2</b></div>
+          <div class="stage"><span>Follow-up</span><b>4</b></div>
+          <div class="stage"><span>Won</span><b>1</b></div>
+        </section>
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Company</th><th>Email</th><th>Stage</th></tr>
+          </thead>
+          <tbody id="rows">
+            <tr><td>Ada Example</td><td>Sample Bakery</td><td class="email">ada@example.com</td><td><span class="pill">New</span></td></tr>
+            <tr><td>Sam Placeholder</td><td>Demo Builders</td><td class="email">sam@example.com</td><td><span class="pill">Qualified</span></td></tr>
+            <tr><td>Lee Fictional</td><td>Test Garden Co.</td><td class="email">lee@example.org</td><td><span class="pill won">Won</span></td></tr>
+          </tbody>
+        </table>
+      </main>
+    </div>
+    <dialog id="form">
+      <h3>New lead</h3>
+      <label for="name">Name</label>
+      <input id="name" autocomplete="off" />
+      <label for="company">Company</label>
+      <input id="company" autocomplete="off" />
+      <label for="email">Email</label>
+      <input id="email" autocomplete="off" />
+      <div class="actions">
+        <button class="ghost" id="cancel">Cancel</button>
+        <button class="primary" id="save">Save lead</button>
+      </div>
+    </dialog>
+    <script>
+      const form = document.getElementById('form')
+      document.getElementById('new-lead').addEventListener('click', () => form.showModal())
+      document.getElementById('cancel').addEventListener('click', () => form.close())
+      document.getElementById('save').addEventListener('click', () => {
+        const value = id => document.getElementById(id).value.trim()
+        const row = document.createElement('tr')
+        row.className = 'added'
+        for (const text of [value('name'), value('company'), value('email')]) {
+          const cell = document.createElement('td')
+          cell.textContent = text
+          row.appendChild(cell)
+        }
+        row.children[2].className = 'email'
+        const stage = document.createElement('td')
+        stage.innerHTML = '<span class="pill">New</span>'
+        row.appendChild(stage)
+        document.getElementById('rows').prepend(row)
+        const count = document.getElementById('count-new')
+        count.textContent = String(Number(count.textContent) + 1)
+        form.close()
+      })
+    </script>
+  </body>
+</html>

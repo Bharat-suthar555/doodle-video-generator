@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schema/storyboard.schema.json",
+  "project": {
+    "title": "The Two-Minute Rule",
+    "purpose": "A 25-second vertical explainer for Shorts or Reels about handling small tasks.",
+    "audience": "People who feel buried by small to-dos"
+  },
+  "format": { "aspect": "9:16", "fps": 30 },
+  "style": { "seed": 3, "hold": 0.5, "drawSpeed": 2800, "writeSpeed": 24, "gap": 0.1, "startDelay": 0.2 },
+  "narration": { "wordsPerMinute": 165, "leadIn": 0.2, "tail": 0.3 },
+  "subtitles": { "position": "bottom" },
+  "export": { "output": "output/two-minute-rule-short.mp4", "fadeOut": 0.5 },
+  "youtube": {
+    "title": "The Two-Minute Rule in 25 Seconds #shorts",
+    "description": "One question that clears small tasks fast: will it take less than two minutes?",
+    "tags": ["productivity", "two minute rule", "shorts", "whiteboard"],
+    "thumbnailConcept": "A big hand-drawn stopwatch with \"2 min?\" written beside it."
+  },
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "The Problem",
+      "narration": { "text": "Small tasks piling up? Try the two-minute rule.", "provenance": "generated" },
+      "elements": [
+        { "type": "text", "id": "hook-title", "text": "Small tasks piling up?", "x": 540, "y": 330, "fontSize": 96, "maxWidth": 900 },
+        { "type": "icon", "name": "sticky-note", "x": 330, "y": 760, "size": 220 },
+        { "type": "icon", "name": "mail", "x": 750, "y": 700, "size": 220 },
+        { "type": "icon", "name": "document", "x": 540, "y": 1040, "size": 240 },
+        { "type": "highlight", "target": "hook-title", "style": "marker" }
+      ]
+    },
+    {
+      "id": "the-rule",
+      "chapter": "The Rule",
+      "transition": { "type": "slide-up", "duration": 0.45 },
+      "narration": {
+        "text": "When a task appears, ask one question: will it take less than two minutes? If yes, do it now. If not, schedule it.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "flowchart",
+          "id": "rule",
+          "direction": "column",
+          "x": 540,
+          "y": 760,
+          "width": 960,
+          "height": 1150,
+          "nodeWidth": 400,
+          "fontSize": 46,
+          "nodes": [
+            { "id": "task", "label": "New task", "icon": "inbox" },
+            { "id": "decide", "label": "Under 2 minutes?", "shape": "diamond", "fill": "#fff3bf" },
+            { "id": "now", "label": "Do it now", "icon": "check", "fill": "#d3f9d8" },
+            { "id": "later", "label": "Schedule it", "icon": "calendar", "fill": "#d0ebff" }
+          ],
+          "edges": [
+            { "from": "task", "to": "decide" },
+            { "from": "decide", "to": "now", "label": "yes" },
+            { "from": "decide", "to": "later", "label": "no" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "payoff",
+      "chapter": "Why It Works",
+      "transition": { "type": "fade-white", "duration": 0.45 },
+      "narration": { "text": "Quick wins get done right away, and bigger work gets a real slot on your calendar.", "provenance": "generated" },
+      "elements": [
+        { "type": "icon", "name": "clock", "x": 540, "y": 420, "size": 300, "color": "#e4572e" },
+        { "type": "text", "text": "Quick wins: done.", "x": 540, "y": 800, "fontSize": 84 },
+        { "type": "text", "text": "Big work: planned.", "x": 540, "y": 950, "fontSize": 84, "color": "#2b6cb0" },
+        { "type": "icon", "name": "check", "x": 540, "y": 1180, "size": 180, "color": "#2f855a" }
+      ]
+    }
+  ]
+}

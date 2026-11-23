@@ -1,0 +1,399 @@
+{
+  "$schema": "../../schema/storyboard.schema.json",
+  "project": {
+    "title": "What Happens When You Open a Website",
+    "purpose": "A 30-second whiteboard explainer of DNS lookup and the request and response cycle.",
+    "audience": "Beginners who use the web every day"
+  },
+  "format": {
+    "aspect": "16:9",
+    "fps": 30
+  },
+  "style": {
+    "seed": 7,
+    "hold": 0.4,
+    "drawSpeed": 3000,
+    "writeSpeed": 26,
+    "gap": 0.1,
+    "startDelay": 0.2
+  },
+  "narration": {
+    "wordsPerMinute": 165,
+    "leadIn": 0.2,
+    "tail": 0.3
+  },
+  "export": {
+    "output": "output/what-happens-when-you-open-a-website.mp4",
+    "fadeIn": 0.3,
+    "fadeOut": 0.6
+  },
+  "youtube": {
+    "title": "What Happens When You Open a Website? (30-Second Whiteboard)",
+    "description": "A quick whiteboard explainer: how your browser finds a website's server with DNS, asks it for the page, and shows the result.",
+    "tags": [
+      "how the internet works",
+      "dns explained",
+      "whiteboard animation",
+      "web basics"
+    ],
+    "thumbnailConcept": "Hand-drawn laptop and server joined by a bold arrow, with the words \"What happens?\" in marker."
+  },
+  "scenes": [
+    {
+      "id": "intro",
+      "chapter": "The Question",
+      "narration": {
+        "text": "What happens when you type a web address and press Enter? Let's draw it.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "id": "title",
+          "text": "What happens when you open a website?",
+          "at": "top",
+          "fontSize": 78
+        },
+        {
+          "type": "icon",
+          "id": "laptop",
+          "name": "laptop",
+          "x": 600,
+          "y": 560,
+          "size": 250
+        },
+        {
+          "type": "arrow",
+          "id": "go",
+          "from": [
+            770,
+            560
+          ],
+          "to": [
+            1130,
+            560
+          ],
+          "curve": -0.18,
+          "color": "#e4572e",
+          "strokeWidth": 6
+        },
+        {
+          "type": "icon",
+          "id": "globe",
+          "name": "globe",
+          "x": 1320,
+          "y": 560,
+          "size": 240
+        },
+        {
+          "type": "text",
+          "text": "you",
+          "x": 600,
+          "y": 760,
+          "fontSize": 52
+        },
+        {
+          "type": "text",
+          "text": "the website",
+          "x": 1320,
+          "y": 760,
+          "fontSize": 52
+        },
+        {
+          "type": "highlight",
+          "target": "title",
+          "style": "underline"
+        }
+      ]
+    },
+    {
+      "id": "find-the-server",
+      "chapter": "Find the Server",
+      "transition": {
+        "type": "fade-white",
+        "duration": 0.5
+      },
+      "narration": {
+        "text": "Your browser asks a DNS server to turn the name into an IP address, the number of the website's server.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "text": "1. Find the address",
+          "at": "top-left",
+          "fontSize": 70
+        },
+        {
+          "type": "flowchart",
+          "id": "lookup",
+          "y": 520,
+          "height": 360,
+          "nodes": [
+            {
+              "id": "browser",
+              "label": "Your browser",
+              "icon": "laptop"
+            },
+            {
+              "id": "dns",
+              "label": "DNS server",
+              "icon": "search"
+            },
+            {
+              "id": "ip",
+              "label": "203.0.113.7",
+              "shape": "pill",
+              "fill": "#fff3bf"
+            }
+          ],
+          "edges": [
+            {
+              "from": "browser",
+              "to": "dns",
+              "label": "name?"
+            },
+            {
+              "from": "dns",
+              "to": "ip",
+              "label": "number"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "text": "like a phone book for the internet",
+          "x": 960,
+          "y": 820,
+          "fontSize": 50,
+          "color": "#2b6cb0"
+        }
+      ]
+    },
+    {
+      "id": "ask-the-server",
+      "chapter": "Ask the Server",
+      "transition": {
+        "type": "wipe-left",
+        "duration": 0.5
+      },
+      "narration": {
+        "text": "Next, it sends a request to that server, which builds the page, often with help from a database, and sends it back.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "text": "2. Ask the server",
+          "at": "top-left",
+          "fontSize": 70
+        },
+        {
+          "type": "node",
+          "id": "you",
+          "label": "Browser",
+          "icon": "laptop",
+          "x": 380,
+          "y": 540,
+          "width": 280
+        },
+        {
+          "type": "node",
+          "id": "server",
+          "label": "Web server",
+          "icon": "server",
+          "x": 960,
+          "y": 540,
+          "width": 300
+        },
+        {
+          "type": "node",
+          "id": "db",
+          "label": "Database",
+          "icon": "database",
+          "x": 1540,
+          "y": 540,
+          "width": 280
+        },
+        {
+          "type": "connector",
+          "from": "you",
+          "to": "server",
+          "label": "request",
+          "curve": 0.22
+        },
+        {
+          "type": "connector",
+          "from": "server",
+          "to": "db",
+          "dashed": true,
+          "head": "both",
+          "animation": {
+            "cue": "database"
+          }
+        },
+        {
+          "type": "connector",
+          "id": "reply",
+          "from": "server",
+          "to": "you",
+          "label": "page",
+          "curve": 0.22,
+          "color": "#2f855a",
+          "animation": {
+            "cue": "sends it back"
+          }
+        }
+      ],
+      "camera": [
+        {
+          "cue": "builds the page",
+          "focus": "server",
+          "zoom": 1.25,
+          "duration": 1
+        },
+        {
+          "cue": "sends it back",
+          "zoom": 1,
+          "center": [
+            960,
+            540
+          ],
+          "duration": 1
+        }
+      ]
+    },
+    {
+      "id": "show-the-page",
+      "chapter": "Show the Page",
+      "transition": {
+        "type": "fade",
+        "duration": 0.5
+      },
+      "narration": {
+        "text": "Finally, your browser draws the page. Look up, request, display.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "text": "3. Show the page",
+          "at": "top-left",
+          "fontSize": 70
+        },
+        {
+          "type": "rect",
+          "id": "window",
+          "x": 560,
+          "y": 560,
+          "width": 620,
+          "height": 420,
+          "radius": 14
+        },
+        {
+          "type": "line",
+          "from": [
+            260,
+            420
+          ],
+          "to": [
+            860,
+            420
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Hello, web!",
+          "x": 560,
+          "y": 560,
+          "fontSize": 72,
+          "color": "#2b6cb0"
+        },
+        {
+          "type": "group",
+          "id": "steps",
+          "x": 1420,
+          "y": 580,
+          "layout": {
+            "type": "column",
+            "gap": 36
+          },
+          "animation": {
+            "cue": "Look up"
+          },
+          "children": [
+            {
+              "type": "group",
+              "layout": {
+                "type": "row",
+                "gap": 18
+              },
+              "children": [
+                {
+                  "type": "icon",
+                  "name": "check",
+                  "size": 64,
+                  "color": "#2f855a"
+                },
+                {
+                  "type": "text",
+                  "text": "Look up",
+                  "fontSize": 58,
+                  "align": "left"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "layout": {
+                "type": "row",
+                "gap": 18
+              },
+              "children": [
+                {
+                  "type": "icon",
+                  "name": "check",
+                  "size": 64,
+                  "color": "#2f855a"
+                },
+                {
+                  "type": "text",
+                  "text": "Request",
+                  "fontSize": 58,
+                  "align": "left"
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "layout": {
+                "type": "row",
+                "gap": 18
+              },
+              "children": [
+                {
+                  "type": "icon",
+                  "name": "check",
+                  "size": 64,
+                  "color": "#2f855a"
+                },
+                {
+                  "type": "text",
+                  "text": "Display",
+                  "fontSize": 58,
+                  "align": "left"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "highlight",
+          "target": "steps",
+          "style": "box",
+          "color": "#2f855a"
+        }
+      ]
+    }
+  ]
+}

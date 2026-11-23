@@ -1,0 +1,20 @@
+{
+  "url": "mock-app/index.html",
+  "viewport": { "width": 1920, "height": 1080 },
+  "fps": 30,
+  "steps": [
+    { "action": "wait", "ms": 1200 },
+    { "action": "mark", "name": "open-form" },
+    { "action": "click", "selector": "#new-lead" },
+    { "action": "wait", "ms": 500 },
+    { "action": "type", "selector": "#name", "text": "Riley Sample" },
+    { "action": "type", "selector": "#company", "text": "Example Outdoor Gear" },
+    { "action": "type", "selector": "#email", "text": "riley@example.com" },
+    { "action": "wait", "ms": 400 },
+    { "action": "mark", "name": "save" },
+    { "action": "click", "selector": "#save" },
+    { "action": "wait", "ms": 1200 },
+    { "action": "hover", "selector": "#count-new" },
+    { "action": "wait", "ms": 1500 }
+  ]
+}

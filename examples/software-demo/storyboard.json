@@ -1,0 +1,351 @@
+{
+  "$schema": "../../schema/storyboard.schema.json",
+  "project": {
+    "title": "Never Lose a Lead: CRM Pipeline Basics",
+    "purpose": "A short software explainer: the problem of scattered leads, the pipeline idea, and a demo in a fictional CRM.",
+    "audience": "Small business owners new to CRM software"
+  },
+  "format": {
+    "aspect": "16:9",
+    "fps": 30
+  },
+  "style": {
+    "seed": 11,
+    "hold": 0.5,
+    "drawSpeed": 2800,
+    "writeSpeed": 24,
+    "gap": 0.1,
+    "startDelay": 0.2
+  },
+  "narration": {
+    "wordsPerMinute": 160,
+    "leadIn": 0.3,
+    "tail": 0.4
+  },
+  "export": {
+    "output": "output/crm-pipeline-basics.mp4",
+    "fadeIn": 0.3,
+    "fadeOut": 0.6
+  },
+  "youtube": {
+    "title": "Never Lose a Lead: CRM Pipeline Basics",
+    "description": "Why leads get lost, how a pipeline fixes it, and what adding a lead looks like. The app shown is a fictional mock made for this demo.",
+    "tags": [
+      "crm",
+      "lead management",
+      "sales pipeline",
+      "small business"
+    ],
+    "thumbnailConcept": "Scattered sticky notes on the left, one neat hand-drawn funnel on the right."
+  },
+  "sources": [
+    {
+      "id": "mock-app",
+      "description": "The fictional DemoCRM page in mock-app/index.html, recorded with recording.json",
+      "kind": "user-provided"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "problem",
+      "chapter": "The Problem",
+      "narration": {
+        "text": "Leads arrive by email, phone and web forms. Kept in spreadsheets and sticky notes, some slip through the cracks.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "id": "title",
+          "text": "Where did that lead go?",
+          "at": "top",
+          "fontSize": 80
+        },
+        {
+          "type": "icon",
+          "id": "mail",
+          "name": "mail",
+          "x": 480,
+          "y": 420,
+          "size": 170
+        },
+        {
+          "type": "icon",
+          "id": "phone",
+          "name": "phone",
+          "x": 960,
+          "y": 410,
+          "size": 170
+        },
+        {
+          "type": "icon",
+          "id": "web",
+          "name": "globe",
+          "x": 1440,
+          "y": 420,
+          "size": 170
+        },
+        {
+          "type": "icon",
+          "id": "sheet",
+          "name": "spreadsheet",
+          "x": 720,
+          "y": 760,
+          "size": 190
+        },
+        {
+          "type": "icon",
+          "id": "note",
+          "name": "sticky-note",
+          "x": 1200,
+          "y": 760,
+          "size": 190
+        },
+        {
+          "type": "connector",
+          "from": "mail",
+          "to": "sheet",
+          "dashed": true
+        },
+        {
+          "type": "connector",
+          "from": "phone",
+          "to": "note",
+          "dashed": true
+        },
+        {
+          "type": "connector",
+          "from": "web",
+          "to": "note",
+          "dashed": true
+        },
+        {
+          "type": "text",
+          "text": "?",
+          "x": 960,
+          "y": 760,
+          "fontSize": 140,
+          "color": "#e4572e",
+          "animation": {
+            "cue": "slip through"
+          }
+        }
+      ]
+    },
+    {
+      "id": "pipeline",
+      "chapter": "One Pipeline",
+      "transition": {
+        "type": "fade-white",
+        "duration": 0.5
+      },
+      "narration": {
+        "text": "A CRM keeps every lead in one pipeline: capture it, qualify it, follow up, and win the deal.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "text",
+          "text": "One pipeline for every lead",
+          "at": "top",
+          "fontSize": 76
+        },
+        {
+          "type": "flowchart",
+          "id": "flow",
+          "y": 560,
+          "nodes": [
+            {
+              "id": "capture",
+              "label": "Capture",
+              "icon": "inbox"
+            },
+            {
+              "id": "qualify",
+              "label": "Qualify",
+              "icon": "funnel"
+            },
+            {
+              "id": "follow",
+              "label": "Follow up",
+              "icon": "phone"
+            },
+            {
+              "id": "win",
+              "label": "Win",
+              "icon": "trophy",
+              "fill": "#d3f9d8"
+            }
+          ],
+          "edges": [
+            {
+              "from": "capture",
+              "to": "qualify"
+            },
+            {
+              "from": "qualify",
+              "to": "follow"
+            },
+            {
+              "from": "follow",
+              "to": "win"
+            }
+          ]
+        }
+      ],
+      "camera": [
+        {
+          "cue": "win the deal",
+          "focus": "win",
+          "zoom": 1.3,
+          "duration": 0.9
+        }
+      ]
+    },
+    {
+      "id": "demo",
+      "type": "footage",
+      "chapter": "See It in Action",
+      "transition": {
+        "type": "whiteboard-to-screen",
+        "duration": 0.6
+      },
+      "narration": {
+        "text": "Here it is in a fictional CRM. Click New lead, type the details, and save. The lead lands in the pipeline, ready for follow-up.",
+        "provenance": "generated",
+        "sourceIds": [
+          "mock-app"
+        ]
+      },
+      "footage": {
+        "source": "footage/mock-crm.mp4",
+        "provenance": "mock",
+        "label": "Mock demo · fictional data",
+        "trim": {
+          "start": 0.6,
+          "end": 12.6
+        },
+        "zoom": [
+          {
+            "at": 1.3,
+            "duration": 0.8,
+            "zoom": 1.55,
+            "center": [
+              960,
+              540
+            ]
+          },
+          {
+            "at": 6.2,
+            "duration": 0.7,
+            "zoom": 1,
+            "center": [
+              960,
+              540
+            ]
+          }
+        ],
+        "masks": [
+          {
+            "x": 1105,
+            "y": 330,
+            "width": 460,
+            "height": 170,
+            "style": "blur",
+            "end": 1.2
+          },
+          {
+            "x": 1105,
+            "y": 330,
+            "width": 460,
+            "height": 230,
+            "style": "blur",
+            "start": 7.0
+          }
+        ],
+        "callouts": [
+          {
+            "type": "text",
+            "id": "saved",
+            "text": "New lead, saved in one place",
+            "x": 1000,
+            "y": 760,
+            "fontSize": 54,
+            "color": "#e4572e",
+            "animation": {
+              "type": "fade",
+              "start": 7.4
+            }
+          },
+          {
+            "type": "arrow",
+            "from": [
+              760,
+              720
+            ],
+            "to": [
+              470,
+              372
+            ],
+            "curve": -0.2,
+            "color": "#e4572e",
+            "strokeWidth": 7,
+            "animation": {
+              "start": 7.6,
+              "duration": 0.6
+            }
+          },
+          {
+            "type": "rect",
+            "x": 474,
+            "y": 195,
+            "width": 400,
+            "height": 118,
+            "radius": 16,
+            "color": "#e4572e",
+            "strokeWidth": 6,
+            "animation": {
+              "start": 9,
+              "duration": 0.7
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "recap",
+      "chapter": "Recap",
+      "transition": {
+        "type": "screen-to-whiteboard",
+        "duration": 0.6
+      },
+      "narration": {
+        "text": "One place for every lead means fewer missed follow-ups.",
+        "provenance": "generated"
+      },
+      "elements": [
+        {
+          "type": "icon",
+          "name": "funnel",
+          "x": 960,
+          "y": 380,
+          "size": 260,
+          "color": "#2b6cb0"
+        },
+        {
+          "type": "text",
+          "id": "recap-text",
+          "text": "Every lead. One pipeline.",
+          "x": 960,
+          "y": 680,
+          "fontSize": 88
+        },
+        {
+          "type": "highlight",
+          "target": "recap-text",
+          "style": "underline"
+        }
+      ]
+    }
+  ]
+}
