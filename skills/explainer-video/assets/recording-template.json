@@ -1,0 +1,14 @@
+{
+  "url": "http://localhost:3000/",
+  "viewport": { "width": 1920, "height": 1080 },
+  "fps": 30,
+  "cursor": true,
+  "steps": [
+    { "action": "wait", "ms": 1000 },
+    { "action": "mark", "name": "start" },
+    { "action": "click", "selector": "#replace-with-a-button-selector" },
+    { "action": "type", "selector": "#replace-with-an-input-selector", "text": "Sample text" },
+    { "action": "wait", "ms": 800 },
+    { "action": "mark", "name": "end" }
+  ]
+}

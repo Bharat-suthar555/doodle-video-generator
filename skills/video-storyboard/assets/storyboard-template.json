@@ -1,0 +1,48 @@
+{
+  "project": {
+    "title": "Video Title",
+    "purpose": "What viewers should know or do after watching",
+    "audience": "Who the video is for"
+  },
+  "format": { "aspect": "16:9", "fps": 30 },
+  "narration": { "wordsPerMinute": 150 },
+  "subtitles": { "enabled": true, "burnIn": true },
+  "export": { "output": "output/video.mp4" },
+  "youtube": { "title": "Video Title", "description": "One-paragraph description.", "tags": [] },
+  "sources": [],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Introduction",
+      "narration": { "text": "Open with the viewer's problem or a question.", "provenance": "generated" },
+      "elements": [{ "type": "text", "id": "title", "text": "A short title", "at": "top", "fontSize": 80 }]
+    },
+    {
+      "id": "explain",
+      "chapter": "How It Works",
+      "transition": { "type": "fade-white", "duration": 0.5 },
+      "narration": { "text": "Explain the idea in steps.", "provenance": "generated" },
+      "elements": [
+        {
+          "type": "flowchart",
+          "id": "steps",
+          "nodes": [
+            { "id": "first", "label": "First" },
+            { "id": "second", "label": "Second" },
+            { "id": "third", "label": "Third" }
+          ],
+          "edges": [{ "from": "first", "to": "second" }, { "from": "second", "to": "third" }]
+        }
+      ]
+    },
+    {
+      "id": "demo",
+      "type": "footage",
+      "chapter": "Demo",
+      "transition": { "type": "whiteboard-to-screen", "duration": 0.6 },
+      "narration": { "text": "Describe what the recording shows.", "provenance": "generated" },
+      "footage": { "provenance": "user-recording" },
+      "shot": { "description": "What to record", "steps": ["Open the page", "Do the action", "Show the result"] }
+    }
+  ]
+}

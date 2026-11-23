@@ -1,0 +1,14 @@
+{
+  "name": "doodle-video-generator",
+  "owner": { "name": "OWNER" },
+  "metadata": {
+    "description": "Agent skills for whiteboard doodle animation, video storyboards, complete explainer videos and video quality checks.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    { "name": "doodle-animation", "description": "Render whiteboard doodle animations with handwriting, a drawing hand and diagrams.", "source": "./", "strict": false, "skills": ["./skills/doodle-animation"] },
+    { "name": "video-storyboard", "description": "Plan videos: scripts, scenes, narration, timings and shot lists.", "source": "./", "strict": false, "skills": ["./skills/video-storyboard"] },
+    { "name": "explainer-video", "description": "Produce complete explainer videos with whiteboard scenes, recordings, narration and subtitles.", "source": "./", "strict": false, "skills": ["./skills/explainer-video"] },
+    { "name": "video-quality-check", "description": "Check rendered videos for technical problems and write a JSON report.", "source": "./", "strict": false, "skills": ["./skills/video-quality-check"] }
+  ]
+}

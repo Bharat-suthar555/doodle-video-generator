@@ -1,0 +1,46 @@
+{
+  "note": "Scene snippets to copy into a storyboard's scenes array. Board units are 1920x1080.",
+  "scenes": [
+    {
+      "id": "title-and-icons",
+      "chapter": "Introduction",
+      "narration": { "text": "Replace this with the narration for the scene.", "provenance": "generated" },
+      "elements": [
+        { "type": "text", "id": "title", "text": "Your title here", "at": "top", "fontSize": 80 },
+        { "type": "icon", "name": "lightbulb", "x": 640, "y": 560, "size": 240 },
+        { "type": "arrow", "from": [800, 560], "to": [1120, 560], "curve": -0.15 },
+        { "type": "icon", "name": "rocket", "x": 1280, "y": 560, "size": 240 },
+        { "type": "highlight", "target": "title", "style": "underline" }
+      ]
+    },
+    {
+      "id": "process",
+      "chapter": "How It Works",
+      "transition": { "type": "fade-white", "duration": 0.5 },
+      "elements": [
+        { "type": "text", "text": "Three steps", "at": "top-left", "fontSize": 70 },
+        {
+          "type": "flowchart",
+          "id": "steps",
+          "y": 560,
+          "nodes": [
+            { "id": "one", "label": "Step one", "icon": "inbox" },
+            { "id": "two", "label": "Step two", "icon": "gear" },
+            { "id": "three", "label": "Step three", "icon": "check", "fill": "#d3f9d8" }
+          ],
+          "edges": [{ "from": "one", "to": "two" }, { "from": "two", "to": "three" }]
+        }
+      ],
+      "camera": [{ "at": 6, "focus": "three", "zoom": 1.3, "duration": 1 }]
+    },
+    {
+      "id": "numbers",
+      "chapter": "Results",
+      "transition": { "type": "wipe-left", "duration": 0.5 },
+      "elements": [
+        { "type": "text", "text": "Use the user's real numbers", "at": "top", "fontSize": 64 },
+        { "type": "chart", "kind": "bar", "y": 600, "width": 900, "height": 480, "data": [{ "label": "A", "value": 3 }, { "label": "B", "value": 5 }, { "label": "C", "value": 8 }] }
+      ]
+    }
+  ]
+}
