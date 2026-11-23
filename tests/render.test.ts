@@ -78,6 +78,31 @@ describe.skipIf(!hasFfmpeg)('rendering', () => {
     expect(existsSync(path.join(dir, 'clip.mp4'))).toBe(true)
   }, 120000)
 
+  it('mixes narration audio with ducked music and normalizes loudness', () => {
+    const dir = tempDir()
+    const tone = (name: string, freq: number, seconds: number) =>
+      execFileSync('ffmpeg', ['-v', 'error', '-f', 'lavfi', '-i', `sine=frequency=${freq}:duration=${seconds}`, '-ac', '2', path.join(dir, name)])
+    tone('voice.wav', 220, 2.5)
+    tone('music.wav', 550, 2)
+    const sb = {
+      project: { title: 'Audio' },
+      format: { width: 320, height: 180 },
+      audio: { music: { file: 'music.wav', license: 'generated test tone', volume: -20 } },
+      export: { output: 'out/a.mp4', preset: 'ultrafast' },
+      scenes: [{ id: 'one', narration: { text: 'A tone stands in for speech.', audio: 'voice.wav' }, elements: [{ type: 'text', text: 'One' }] }]
+    }
+    const file = path.join(dir, 'storyboard.json')
+    writeFileSync(file, JSON.stringify(sb))
+    const r = cli(['build', file, '--frames', '1', '-q'])
+    expect(r.code, r.stderr).toBe(0)
+    const report = JSON.parse(readFileSync(path.join(dir, 'out', 'a.report.json'), 'utf8'))
+    const check = (id: string) => report.checks.find((c: { id: string }) => c.id === id)
+    expect(check('audio.loudness').status).toBe('pass')
+    expect(check('audio.clipping').status).toBe('pass')
+    // The scene stretches to the measured narration: lead-in + 2.5s + tail
+    expect(report.metadata.duration).toBeGreaterThanOrEqual(0.4 + 2.5 + 0.6 - 0.05)
+  }, 120000)
+
   it('inspects any video against expectations', () => {
     const dir = tempDir()
     const video = path.join(dir, 'v.mp4')
