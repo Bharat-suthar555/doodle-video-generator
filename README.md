@@ -77,7 +77,7 @@ node <skill folder>/scripts/toolkit.mjs install --from /path/to/doodle-video-gen
 node <skill folder>/scripts/toolkit.mjs install --from github:OWNER/doodle-video-generator#v0.1.0
 ```
 
-Installing from GitHub builds the package on your machine, which needs npm to run its `prepare` script; see [Publishing](docs/PUBLISHING.md) for the details. You can also run `npm install doodle-video-generator` in a project, and the skills find it in `node_modules`.
+Installing from GitHub builds the package on your machine; npm may print an install-scripts warning about `prepare`, which needs no action (see [Publishing](docs/PUBLISHING.md)). You can also run `npm install doodle-video-generator` in a project, and the skills find it in `node_modules`.
 
 ### Requirements
 

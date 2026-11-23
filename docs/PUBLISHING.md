@@ -30,7 +30,7 @@ The published package contains `dist/`, so installs don't need a build.
 
 ## Installing the Toolkit From GitHub
 
-`npm install github:OWNER/doodle-video-generator#v0.1.0` builds the package through its `prepare` script. Recent npm versions skip install scripts of new packages until you approve them, so this route may need `npm install-scripts approve doodle-video-generator` first (the npm warning names the exact command). Installing from npm or from a tarball made with `npm pack` needs no build.
+`npm install github:OWNER/doodle-video-generator#v0.1.0` builds the package from source: npm clones it, installs the development dependencies and runs `prepare` while packing it. This was verified with a local Git URL (`git+file://…#main`) and npm 11.20, which built `dist/` and printed an install-scripts warning about `prepare` that needs no action. Installing from npm or from a tarball made with `npm pack` needs no build.
 
 ## skills.sh
 

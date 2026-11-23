@@ -64,4 +64,4 @@ The checks only read the video and write the report and frames you ask for. Noth
 User: "Is final.mp4 ready for YouTube?"
 
 1. `dvg inspect final.mp4 --expect-width 1920 --expect-height 1080 --expect-fps 30 --srt final.srt --report final.report.json --frames 8`
-2. Report: "27 checks passed, 1 warning: true peak is -0.6 dBTP (keep at or below -1). No failures. I looked at the 8 extracted frames; I didn't listen to the audio."
+2. Report in this shape, with the real numbers from the report: "27 checks passed, 1 warning: true peak is -0.6 dBTP (keep at or below -1). No failures. I looked at the 8 extracted frames; I didn't listen to the audio."

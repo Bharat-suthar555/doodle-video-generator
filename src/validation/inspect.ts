@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync } from 'node:fs'
 import path from 'node:path'
 import { UserError } from '../core/errors.ts'
 import { ffmpeg, parseRate, probe, requireFfmpeg, run, ffmpegBin, type ProbeResult } from '../core/ffmpeg.ts'
@@ -182,6 +182,8 @@ export const checkTimeline = (t: TimelineFile, videoDuration: number | undefined
 /** Extracts evenly spaced frames and a contact sheet for visual review. */
 const writeFrames = async (file: string, duration: number, count: number, dir: string) => {
   mkdirSync(dir, { recursive: true })
+  // Remove stills from an earlier run so the folder matches this video; other files stay
+  for (const f of readdirSync(dir)) if (/^frame-\d+-[\d.]+s\.png$|^contact-sheet\.png$/.test(f)) rmSync(path.join(dir, f))
   const files: string[] = []
   for (let i = 0; i < count; i++) {
     const t = (duration * (i + 0.5)) / count

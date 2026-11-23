@@ -1,5 +1,5 @@
 import { execFileSync } from 'node:child_process'
-import { existsSync, readFileSync, writeFileSync } from 'node:fs'
+import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 import { cli, hasFfmpeg, tempDir } from './helpers.ts'
@@ -88,5 +88,11 @@ describe.skipIf(!hasFfmpeg)('rendering', () => {
     expect(report.checks.find((c: { id: string }) => c.id === 'video.resolution').status).toBe('fail')
     expect(report.checks.find((c: { id: string }) => c.id === 'audio.codec').status).toBe('pass')
     expect(report.notPerformed.length).toBeGreaterThan(0)
+    // Re-running with fewer frames leaves only this run's stills
+    const frames = path.join(dir, 'frames')
+    writeFileSync(path.join(dir, 'keep.txt'), 'x')
+    cli(['inspect', video, '--frames', '3', '--frames-dir', frames])
+    cli(['inspect', video, '--frames', '1', '--frames-dir', frames])
+    expect(readdirSync(frames).sort()).toEqual(['contact-sheet.png', expect.stringMatching(/^frame-01-/)])
   }, 60000)
 })

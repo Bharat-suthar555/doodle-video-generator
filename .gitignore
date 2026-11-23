@@ -22,3 +22,4 @@ coverage/
 
 # Generated recordings in the examples
 examples/*/footage/
+examples/*/narration/
