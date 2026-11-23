@@ -1,7 +1,7 @@
 # Doodle Video Generator
 
 <p>
-  <a href="https://skills.sh/OWNER/doodle-video-generator"><img alt="skills.sh" src="https://skills.sh/b/OWNER/doodle-video-generator?style=for-the-badge" height="28"></a>
+  <a href="https://skills.sh/Bharat-suthar555doodle-video-generator"><img alt="skills.sh" src="https://skills.sh/b/Bharat-suthar555doodle-video-generator?style=for-the-badge" height="28"></a>
   <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-0a0a0a.svg?style=for-the-badge" height="28"></a>
 </p>
 
@@ -37,16 +37,16 @@ The skills follow the [Agent Skills](https://agentskills.io) format, so they wor
 Once the repository is public on GitHub, install every skill for the agents on your machine:
 
 ```bash
-npx skills add OWNER/doodle-video-generator
+npx skills add Bharat-suthar555doodle-video-generator
 ```
 
 Install one skill:
 
 ```bash
-npx skills add OWNER/doodle-video-generator --skill doodle-animation
-npx skills add OWNER/doodle-video-generator --skill video-storyboard
-npx skills add OWNER/doodle-video-generator --skill explainer-video
-npx skills add OWNER/doodle-video-generator --skill video-quality-check
+npx skills add Bharat-suthar555doodle-video-generator --skill doodle-animation
+npx skills add Bharat-suthar555doodle-video-generator --skill video-storyboard
+npx skills add Bharat-suthar555doodle-video-generator --skill explainer-video
+npx skills add Bharat-suthar555doodle-video-generator --skill video-quality-check
 ```
 
 Pick an agent with `-a`, for example `-a claude-code` (installs to `.claude/skills/`) or `-a codex` (installs to `.agents/skills/`). Add `-g` to install for your user instead of the current project, and `--list` to see the skills without installing. Replace `OWNER` with the GitHub account that hosts the repository.
@@ -54,7 +54,7 @@ Pick an agent with `-a`, for example `-a claude-code` (installs to `.claude/skil
 Claude Code can also install the skills as plugins:
 
 ```text
-/plugin marketplace add OWNER/doodle-video-generator
+/plugin marketplace add Bharat-suthar555doodle-video-generator
 /plugin install explainer-video@doodle-video-generator
 ```
 
@@ -74,7 +74,7 @@ Agents ask you before running `install`, because it downloads packages. The tool
 
 ```bash
 node <skill folder>/scripts/toolkit.mjs install --from /path/to/doodle-video-generator-0.1.0.tgz
-node <skill folder>/scripts/toolkit.mjs install --from github:OWNER/doodle-video-generator#v0.1.0
+node <skill folder>/scripts/toolkit.mjs install --from github:Bharat-suthar555doodle-video-generator#v0.1.0
 ```
 
 Installing from GitHub builds the package on your machine; npm may print an install-scripts warning about `prepare`, which needs no action (see [Publishing](docs/PUBLISHING.md)). You can also run `npm install doodle-video-generator` in a project, and the skills find it in `node_modules`.
@@ -194,7 +194,7 @@ Any agent that reads Agent Skills: Claude Code, Codex, Cursor, Gemini CLI, GitHu
 
 ## How the Skills Appear on skills.sh
 
-[skills.sh](https://skills.sh) lists public repositories whose skills people install with the `skills` CLI, counted through its anonymous install telemetry. After the repository is public at `github.com/OWNER/doodle-video-generator`, the repository page is expected at `skills.sh/OWNER/doodle-video-generator` and each skill at `skills.sh/OWNER/doodle-video-generator/<skill-name>` once installs register. Listing is not immediate or guaranteed. Set `DISABLE_TELEMETRY=1` to opt out of install telemetry yourself.
+[skills.sh](https://skills.sh) lists public repositories whose skills people install with the `skills` CLI, counted through its anonymous install telemetry. After the repository is public at `github.com/Bharat-suthar555doodle-video-generator`, the repository page is expected at `skills.sh/Bharat-suthar555doodle-video-generator` and each skill at `skills.sh/Bharat-suthar555doodle-video-generator/<skill-name>` once installs register. Listing is not immediate or guaranteed. Set `DISABLE_TELEMETRY=1` to opt out of install telemetry yourself.
 
 ## Repository Layout
 
