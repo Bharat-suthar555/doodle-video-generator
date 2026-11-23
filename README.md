@@ -49,7 +49,7 @@ npx skills add Bharat-suthar555/doodle-video-generator --skill explainer-video
 npx skills add Bharat-suthar555/doodle-video-generator --skill video-quality-check
 ```
 
-Pick an agent with `-a`, for example `-a claude-code` (installs to `.claude/skills/`) or `-a codex` (installs to `.agents/skills/`). Add `-g` to install for your user instead of the current project, and `--list` to see the skills without installing. Replace `OWNER` with the GitHub account that hosts the repository.
+Pick an agent with `-a`, for example `-a claude-code` (installs to `.claude/skills/`) or `-a codex` (installs to `.agents/skills/`). Add `-g` to install for your user instead of the current project, and `--list` to see the skills without installing.
 
 Claude Code can also install the skills as plugins:
 
