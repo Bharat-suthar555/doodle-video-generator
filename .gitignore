@@ -1,0 +1,24 @@
+node_modules/
+dist/
+*.tgz
+*.log
+.DS_Store
+
+# Rendered media and intermediate files
+output/
+.dvg-work/
+**/generated/
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3
+*.m4a
+!examples/**/README.md
+
+# Local tool caches
+.vitest-cache/
+coverage/
+
+# Generated recordings in the examples
+examples/*/footage/

@@ -1,0 +1,63 @@
+{
+  "name": "doodle-video-generator",
+  "version": "0.1.0",
+  "description": "Render whiteboard doodle animations and complete explainer videos from a JSON storyboard: handwriting, drawing hand, diagrams, screen recordings, narration, subtitles, music and quality checks. Local rendering with resvg and FFmpeg.",
+  "type": "module",
+  "license": "MIT",
+  "bin": {
+    "doodle-video-generator": "bin/doodle-video-generator.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "assets",
+    "schema",
+    "examples/*/storyboard.json",
+    "examples/*/README.md",
+    "examples/software-demo/recording.json",
+    "examples/software-demo/mock-app/index.html",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "build": "node scripts/clean-dist.mjs && tsc -p tsconfig.build.json && node scripts/write-schema.mjs",
+    "prepare": "npm run build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && vitest run",
+    "validate:skills": "node scripts/validate-skills.mjs",
+    "check:repo": "node scripts/check-repository.mjs",
+    "sync:skills": "node scripts/sync-skill-files.mjs",
+    "demo": "node bin/doodle-video-generator.js demo"
+  },
+  "dependencies": {
+    "@resvg/resvg-js": "2.6.2",
+    "opentype.js": "2.0.0",
+    "zod": "4.6.7"
+  },
+  "peerDependencies": {
+    "playwright-core": ">=1.50.0"
+  },
+  "peerDependenciesMeta": {
+    "playwright-core": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "playwright-core": "1.64.1",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
+  },
+  "keywords": [
+    "whiteboard",
+    "doodle",
+    "explainer-video",
+    "animation",
+    "ffmpeg",
+    "agent-skills"
+  ]
+}
